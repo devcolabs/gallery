@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Random Image Viewer</title>
+<style>
+    /* Resetting default margins and hiding overflow */
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Hide overflow to remove scrollbars */
+    }
+    /* Full viewport width and height image */
+    img#randomImage {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover; /* Scale the image to cover the full element area */
+    }
+</style>
+</head>
+<body>
+<img id="randomImage" src="" alt="Random Image">
+<script>
+// URL for fetching a new image from the server
+const imageUrl = "https://localhost:7004/api/gallery/next";
+
+// Function to refresh the image with a unique query string for cache busting
+function refreshImage() {
+    var nocache = new Date().getTime();
+    document.getElementById('randomImage').src = imageUrl + "?nocache=" + nocache;
+}
+
+// Initial image load
+refreshImage();
+
+// Refresh the image every 5 minutes
+//setInterval(refreshImage, 300000);
+setInterval(refreshImage, 8000);
+</script>
+</body>
+</html>
