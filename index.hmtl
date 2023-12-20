@@ -22,7 +22,7 @@
 <img id="randomImage" src="" alt="Random Image">
 <script>
 // URL for fetching a new image from the server
-const imageUrl = "https://localhost:7004/api/gallery/next";
+const imageUrl = "https://devcohub.azurewebsites.net/api/gallery/next";
 
 // Function to refresh the image with a unique query string for cache busting
 function refreshImage() {
